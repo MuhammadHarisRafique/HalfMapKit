@@ -9,13 +9,15 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController,MKMapViewDelegate {
+class ViewController: UIViewController,MKMapViewDelegate,UITextFieldDelegate {
 
+    @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var mapview: MKMapView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       self.mapview.delegate = self
+        self.mapview.delegate = self
         self.mapview.isZoomEnabled = false
         self.mapview.isScrollEnabled = false
         self.mapview.isRotateEnabled = false
@@ -23,8 +25,8 @@ class ViewController: UIViewController,MKMapViewDelegate {
         
     }
     override func viewDidAppear(_ animated: Bool) {
-    
-        self.calculateDistance(fromLat: 51.379173, fromLong: -0.339520, toLat: 51.380539, toLong: -0.338748) { (d, t, s) in
+   
+        self.calculateDistance(fromLat: 51.379173, fromLong: -0.339520, toLat: 51.380306, toLong: -0.338690) { (d, t, s) in
             
         }
     }
@@ -45,6 +47,16 @@ class ViewController: UIViewController,MKMapViewDelegate {
         let sourceCoord = CLLocationCoordinate2D(latitude: fromLat, longitude: fromLong)
         let destinationCoord = CLLocationCoordinate2D(latitude: toLat, longitude: toLong)
         
+        let annotationOnOrigin = MKPointAnnotation()
+        annotationOnOrigin.coordinate = sourceCoord
+        annotationOnOrigin.title = "asdasd"
+        annotationOnOrigin.subtitle = "xcvvv"
+        
+        let annotationOndestination = MKPointAnnotation()
+        annotationOndestination.coordinate = destinationCoord
+        annotationOndestination.title = "qwerfdsazxcvb"
+        annotationOndestination.subtitle = "xcvwewrevv"
+    
         let mkPlacemarkOrigen = MKPlacemark(coordinate: sourceCoord, addressDictionary: nil)
         let mkPlacemarkDestination = MKPlacemark(coordinate: destinationCoord, addressDictionary: nil)
         
@@ -79,11 +91,11 @@ class ViewController: UIViewController,MKMapViewDelegate {
                     let time = distanceRoute.expectedTravelTime
                     let polyline = distanceRoute.polyline
                     self.mapview.add(polyline)
-                    let padding = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+                    let padding = UIEdgeInsets(top: 30, left: 10, bottom: 20, right: 10)
                     self.mapview.setVisibleMapRect(polyline.boundingMapRect, edgePadding: padding, animated: true)
                     distance = d
                     caltime = time
-                    
+                    self.mapview.addAnnotations([annotationOndestination,annotationOnOrigin])
                     completion(distance,caltime,"")
                     
                 }else{
@@ -95,7 +107,41 @@ class ViewController: UIViewController,MKMapViewDelegate {
         }
         
     }
-  
-
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        if let _ =  touches.first{
+            self.view.endEditing(true);
+        }
+        super.touchesBegan(touches, with: event)
+        
+    }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+        self.setScreenView()
+        
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        self.resetScreenView()
+        
+    }
+    private func setScreenView(){
+        
+        UIView.animate(withDuration: 0.5) {
+            
+            self.view.frame.origin.y -= 180
+        }
+        
+    }
+    private func resetScreenView(){
+        
+        UIView.animate(withDuration: 0.5) {
+            
+            self.view.frame.origin.y += 180
+            
+        }
+        
+        
+    }
 }
 
