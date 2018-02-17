@@ -15,6 +15,7 @@
 		4D12C977202B5DC8008E37BF /* saloonfour 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D12C976202B5DC8008E37BF /* saloonfour 2.png */; };
 		4D12C979202B5DCC008E37BF /* MPV.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D12C978202B5DCC008E37BF /* MPV.png */; };
 		4D12C97B202B5F13008E37BF /* saloonfour.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D12C97A202B5F13008E37BF /* saloonfour.png */; };
+		4D540B902038562400570093 /* GPSFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D540B8F2038562400570093 /* GPSFile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		4D12C976202B5DC8008E37BF /* saloonfour 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "saloonfour 2.png"; sourceTree = "<group>"; };
 		4D12C978202B5DCC008E37BF /* MPV.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MPV.png; sourceTree = "<group>"; };
 		4D12C97A202B5F13008E37BF /* saloonfour.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saloonfour.png; sourceTree = "<group>"; };
+		4D540B8F2038562400570093 /* GPSFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPSFile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				4D12C96B202B5ADE008E37BF /* Assets.xcassets */,
 				4D12C96D202B5ADE008E37BF /* LaunchScreen.storyboard */,
 				4D12C970202B5ADE008E37BF /* Info.plist */,
+				4D540B8F2038562400570093 /* GPSFile.swift */,
 			);
 			path = HalfMapkit;
 			sourceTree = "<group>";
@@ -150,6 +153,7 @@
 			files = (
 				4D12C967202B5ADE008E37BF /* ViewController.swift in Sources */,
 				4D12C965202B5ADE008E37BF /* AppDelegate.swift in Sources */,
+				4D540B902038562400570093 /* GPSFile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
